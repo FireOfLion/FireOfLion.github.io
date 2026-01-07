@@ -3,6 +3,24 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+// Song search
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('searchInput');
+  const songList = document.getElementById('songList');
+
+  if (!searchInput || !songList) return;
+
+  const songs = songList.getElementsByTagName('li');
+
+  searchInput.addEventListener('keyup', function () {
+    const filter = searchInput.value.toLowerCase();
+
+    for (let i = 0; i < songs.length; i++) {
+      const text = songs[i].textContent.toLowerCase();
+      songs[i].style.display = text.includes(filter) ? '' : 'none';
+    }
+  });
+});
 
 (function($) {
 
@@ -254,5 +272,6 @@
 			});
 
 		}
+
 
 })(jQuery);
